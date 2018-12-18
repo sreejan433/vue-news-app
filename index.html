@@ -1,22 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title>The greatest news app ever</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+    ul li{list-style: none;}
+    a:hover{ text-decoration: none}
+    h3{color: #000; text-transform: capitalize; margin-top: 5px;}
+    h4{color: red; margin-bottom: 5px;}
+    </style>
+
+    <title>New App!</title>
   </head>
-  <body>
-    <div class="container" id="app">
-      <div class="columns medium-3" v-for="result in results">
-        <div class="card">
-            <div class="card-divider">
-            {{ result.title }}
-            </div>
-           
-        </div>
-        </div>
+  <body>    
+
+    <div class="container"  id="app">     
+            <div class="row"><h1>News!</h1></div>   
+            <div class="row">
+              <div class="col-sm-12" v-for="result in results">
+                   
+                      <div class="panel panel-default">
+                          <div class="panel-heading">{{ result.source }}</div>
+                          <div class="panel-body">
+                            <ul class="list-group" v-for="article in result.data">
+                              <li class="row">
+                                <div class="col-sm-4">
+                                    <img v-bind:src="article.urlToImage" class="img-thumbnail" >
+                                </div>
+                                <div class="col-sm-8">
+                                    <h4>{{article.author}}</h4>
+                                    <a v-bind:href="article.url">
+                                      <h3>{{article.title}}</h3>
+                                    </a>
+                                    <p>{{article.description}}</p>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                    
+                  
+              </div>               
+            </div>          
     </div>
+
     <script src="https://unpkg.com/vue"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.map"></script> -->
     <script src="app.js"></script>
+  
   </body>
 </html>
