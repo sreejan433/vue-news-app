@@ -3,20 +3,24 @@ const vm = new Vue({
     data: {
       baseurlTopics : "https://newsapi.org/v2/everything",
       baseurlTopheadlines : "https://newsapi.org/v2/top-headlines",
-      apiKey : "31ab40d75032430fa1494d15913e7230",   
-      
+      apiKey : "31ab40d75032430fa1494d15913e7230", 
       settings:{
       	topics : [],      	
       	numberofpost: 4,
       	language: 'en',
       	sortBy: 'publishedAt'
       },
-      results: [],
+      iframSrc: '',
+      results: []
+      
     },
     created : function() {
         this.getNewsData();
       },
     methods:{
+        showArticlePage(showArticlePage){
+            this.iframSrc=showArticlePage;
+        },
     	refreshNews () {
     		this.getNewsData();	     
 	    },

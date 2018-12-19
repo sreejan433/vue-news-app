@@ -37,8 +37,9 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <h4>{{article.author}}</h4>
-                                    <a v-bind:href="article.url">
+                                    <a  v-on:click="showArticlePage(article.url)" data-toggle="modal" data-target="#articlePage">
                                       <h3>{{article.title}}</h3>
+
                                     </a>
                                     <p>{{article.description}}</p>
                                 </div>
@@ -91,6 +92,28 @@
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-primary" @click.prevent="refreshNews()" data-dismiss="modal">Save changes</button>
                 </div>
+              </div>
+            </div>
+          </div>
+
+
+           <!-- Article Modal -->
+           <div class="modal fade" id="articlePage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Article</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" id="articlemodel-body">
+                  <iframe 
+                  width="100%" 
+                  height="500" 
+                  v-bind:src="iframSrc">
+                  </iframe>
+                </div>                 
               </div>
             </div>
           </div>
